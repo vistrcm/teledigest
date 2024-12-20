@@ -850,14 +850,14 @@
         },
         "pyrage": {
             "hashes": [
-                "sha256:4cd99d90ee4105c2c43a32d4d58f63073b2b5e8361d5ccb7a3855f9070e0257c",
-                "sha256:82cb97b95516ab6d4c305e55ab8a2efe587ab7e4b8cc687aa9c3db7e10123ff5",
-                "sha256:b7bdeedad0524fde93e9a7313a244eb00a994b156fd9c7a6c0277c30577a35ab",
-                "sha256:ba20e93cb8a8b24a30e4c83f7c607eb705142f4dbc42afc18a5657001e46466d"
+                "sha256:2e174a903c9ba715c9cca401e75497154c9533c6a19e5fa3fa4ee21b47961a83",
+                "sha256:49891edc629b7c409d643feb0356daca241f936cad1373dd79895985522de42a",
+                "sha256:a8a1267edb962d13a1db1e0f8e03249568c6eab1d109a4d83b2d5a1c8613c98b",
+                "sha256:c5f9bb50b881b80cdd311eeff2c7b7b5aa5fa034f874651f471bce8ecc40681e"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.9'",
-            "version": "==1.2.2"
+            "version": "==1.2.3"
         },
         "rsa": {
             "hashes": [
