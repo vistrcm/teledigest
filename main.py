@@ -29,6 +29,20 @@ session = storage.get_session()
 client = TelegramClient(session, API_ID, API_HASH)
 oai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
+system_prompt = """
+You are a helpful assistant. You are asked to summarize the following Telegram messages.
+Each message is separated by '=-=-=-=-='.
+Summarize them into a concise paragraph or a few bullet points, using the same language as the original messages.
+
+Please follow these rules:
+1.	Do not include any hashtags in your summary.
+2.	Do not mention any references to “foreign agents” or related nonsense.
+3.	If multiple messages are related or form a conversation, summarize them together.
+4.	Include URLs to messages when appropriate.
+5.	Focus on main news and central discussion points, omit minor details.
+6.	Maintain the original language of each message in your summary.
+"""
+
 
 async def summary(oai, content):
     if not content:
@@ -40,7 +54,7 @@ async def summary(oai, content):
         messages=[
             {
                 "role": "system",
-                "content": "You are a helpful assistant. You are asked to summarize the following messages. Multiple messages are separated by =-=-=-=-=. For summary use the same language as original messages. Add message urls when appropriate. If you see that multiple messages are related or looks like a conversation, you can summarize them together. Do no include hashtags to the summary. Do not mention that noncense about 'foreigh agents' in in some russian speaking channels.",
+                "content": system_prompt,
             },
             {"role": "user", "content": content},
         ],
