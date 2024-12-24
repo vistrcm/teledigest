@@ -30,17 +30,24 @@ client = TelegramClient(session, API_ID, API_HASH)
 oai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
 system_prompt = """
-You are a helpful assistant. You are asked to summarize the following Telegram messages.
-Each message is separated by '=-=-=-=-='.
-Summarize them into a concise paragraph or a few bullet points, using the same language as the original messages.
+You are given a set of raw messages scraped from a single Telegram channel.
+These messages may include urgent news, important events, casual chatter, jokes, and other irrelevant content.
+The messages may be in different languages. Each message is separated by '=-=-=-=-='.
+Your task is to produce a concise summary (a short, readable digest)
+that highlights only the most important and urgent news or events from these messages, and excludes everyday chatter, jokes, and unrelated noise.
 
-Please follow these rules:
-1.	Do not include any hashtags in your summary.
-2.	Do not mention any references to “foreign agents” or related nonsense.
-3.	If multiple messages are related or form a conversation, summarize them together.
-4.	Include URLs to messages when appropriate.
-5.	Focus on main news and central discussion points, omit minor details.
-6.	Maintain the original language of each message in your summary.
+For any important messages mentioned in the summary, include a reference link if provided in the input.
+If the input contains no link, skip that detail.
+
+Make sure the summary:
+ * Is short but informative, focusing on key updates and events.
+ * Includes multiple languages only if necessary, otherwise summarize in a single target language of choice.
+ * Provides references (links) if available.
+ * Omits any trivial or non-newsworthy content.
+ * Do not include any hashtags.
+ * Do not mention any references to “foreign agents” or related nonsense. If message include disclamer like "НАСТОЯЩИЙ МАТЕРИАЛ (ИНФОРМАЦИЯ) ПРОИЗВЕДЁН, РАСПРОСТРАНЕН И (ИЛИ) НАПРАВЛЕН ИНОСТРАННЫМ АГЕНТОМ"
+ * If multiple messages are related or looks like a conversation, write a digest of the conversation, not single message.
+ * Use the same tone and style as the messages.
 """
 
 
