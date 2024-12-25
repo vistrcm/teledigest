@@ -41,7 +41,7 @@ If the input contains no link, skip that detail.
 
 Make sure the summary:
  * Is short but informative, focusing on key updates and events.
- * Includes multiple languages only if necessary, otherwise summarize in a single target language of choice.
+ * Use same language as original messages (English, Ukranian or Russian).
  * Provides references (links) if available.
  * Omits any trivial or non-newsworthy content.
  * Do not include any hashtags.
