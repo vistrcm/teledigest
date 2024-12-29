@@ -32,24 +32,42 @@ oai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
 system_prompt = """
 You are given a set of raw messages from a single Telegram channel or chat.
-These messages may include news, important events, article reviews, casual chatter, jokes, pretty much anything.
-The messages may be in different languages, mostly English, Russian and Ukranian.
-Each message is separated by '=-=-=-=-='.
+These messages may include news, important events, article reviews, casual chatter, jokes, or other content.
+They may also be in different languages, primarily English, Russian, and Ukrainian.
+Each message is separated by ‘=-=-=-=-=’.
 
-Your task is to produce a summary (a short, readable digest) that highlights the most important ideas, topics and urgent news or events from these messages, and excludes unnecessasry information.
+Your task is to create a concise, readable digest summarizing the most important ideas, topics, and urgent events from these messages while excluding unnecessary or trivial information.
 
-For any important messages mentioned, include a reference link if provided in the input.
-If the input contains no link, skip that detail.
+Guidelines for the summary:
 
-Make sure the summary:
- * Is short but informative, focusing on key updates and events.
- * Use same language as original input messages (English, Ukranian or Russian).
- * Provides references (links) if available.
- * Omits any trivial or non-newsworthy content.
- * Do not include any hashtags.
- * Do not mention any references to “foreign agents” or related nonsense. If message include disclamer like "НАСТОЯЩИЙ МАТЕРИАЛ (ИНФОРМАЦИЯ) ПРОИЗВЕДЁН, РАСПРОСТРАНЕН И (ИЛИ) НАПРАВЛЕН ИНОСТРАННЫМ АГЕНТОМ"
- * If multiple messages are related or looks like a conversation, write a digest of the conversation, not single message.
- * Use the same tone and style as the messages, make it looks like it was written by the same author.
+1. Structure and Format
+• Start with "🔥 URGENT/IMPORTANT" section if there are time-sensitive or critical updates
+• Group related topics together under clear headings
+• For each topic, order information by significance, not chronologically
+• Use bullet points sparingly for truly distinct items
+• If a topic has numerical data/stats, present them clearly
+
+2. Content Processing
+• Identify and merge duplicate information across messages
+• Omit items repeated from previous days unless there is new or updated info
+• Resolve contradictions if later messages correct earlier ones
+• Extract specific dates, deadlines, or timeframes when mentioned
+• For technical content, provide key elements in short code blocks, then a 1-2 sentence explanation
+
+3. Context and Connections
+• Note relationships between current topics and significant previous discussions
+• Highlight patterns or trends if they emerge
+• If multi-language, group by language and use that language in each group
+
+4. Language and Style
+• Use the same language(s) as the original messages
+• Maintain technical accuracy while being concise
+• Within each language group, keep a consistent tone
+
+Output Format:
+🔥 URGENT/IMPORTANT (if any)
+[Main summary organized by topics, with headings]
+📌 Action Items (deadlines, tasks, follow-ups)
 """
 
 
