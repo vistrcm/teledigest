@@ -177,7 +177,7 @@ async def main():
             print_wrapped(summary_response)
 
             print()
-            print("*" * 80)  # separator
+            print("*" * os.get_terminal_size().columns)  # separator
             print()
 
     session_string = StringSession.save(client.session)
