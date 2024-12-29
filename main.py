@@ -159,7 +159,11 @@ async def process_entity(entity):
 
 def print_wrapped(text):
     terminal_size = os.get_terminal_size().columns
-    wrapped_text = textwrap.fill(text, terminal_size)
+
+    wrapped_text = "\n".join(
+        [textwrap.fill(line, terminal_size, replace_whitespace=False) for line in text.splitlines()]
+    )
+
     print(wrapped_text)
 
 async def main():
