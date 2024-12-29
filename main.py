@@ -6,6 +6,7 @@ from data import Storage
 from telethon.sessions import StringSession
 import pyrage
 from openai import AsyncOpenAI
+import textwrap
 
 logger = logging.getLogger(__name__)
 
@@ -155,6 +156,11 @@ async def process_entity(entity):
     return await summary(oai_client, summary_request)
 
 
+def print_wrapped(text):
+    terminal_size = os.get_terminal_size().columns
+    wrapped_text = textwrap.fill(text, terminal_size)
+    print(wrapped_text)
+
 async def main():
     logging.basicConfig(level=logging.WARN)
 
@@ -163,7 +169,7 @@ async def main():
         entity = dialog["id"]
 
         if summary_response := await process_entity(entity):
-            print(summary_response)
+            print_wrapped(summary_response)
 
             print()
             print("*" * 80)  # separator
