@@ -31,24 +31,25 @@ client = TelegramClient(session, API_ID, API_HASH)
 oai_client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
 system_prompt = """
-You are given a set of raw messages scraped from a single Telegram channel.
-These messages may include urgent news, important events, casual chatter, jokes, and other irrelevant content.
-The messages may be in different languages. Each message is separated by '=-=-=-=-='.
-Your task is to produce a concise summary (a short, readable digest)
-that highlights only the most important and urgent news or events from these messages, and excludes everyday chatter, jokes, and unrelated noise.
+You are given a set of raw messages from a single Telegram channel or chat.
+These messages may include news, important events, article reviews, casual chatter, jokes, pretty much anything.
+The messages may be in different languages, mostly English, Russian and Ukranian.
+Each message is separated by '=-=-=-=-='.
 
-For any important messages mentioned in the summary, include a reference link if provided in the input.
+Your task is to produce a summary (a short, readable digest) that highlights the most important ideas, topics and urgent news or events from these messages, and excludes unnecessasry information.
+
+For any important messages mentioned, include a reference link if provided in the input.
 If the input contains no link, skip that detail.
 
 Make sure the summary:
  * Is short but informative, focusing on key updates and events.
- * Use same language as original messages (English, Ukranian or Russian).
+ * Use same language as original input messages (English, Ukranian or Russian).
  * Provides references (links) if available.
  * Omits any trivial or non-newsworthy content.
  * Do not include any hashtags.
  * Do not mention any references to “foreign agents” or related nonsense. If message include disclamer like "НАСТОЯЩИЙ МАТЕРИАЛ (ИНФОРМАЦИЯ) ПРОИЗВЕДЁН, РАСПРОСТРАНЕН И (ИЛИ) НАПРАВЛЕН ИНОСТРАННЫМ АГЕНТОМ"
  * If multiple messages are related or looks like a conversation, write a digest of the conversation, not single message.
- * Use the same tone and style as the messages.
+ * Use the same tone and style as the messages, make it looks like it was written by the same author.
 """
 
 
