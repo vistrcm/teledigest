@@ -41,6 +41,7 @@ Follow these steps:
 4. If code snippets or links appear, include them accurately in the summary.
 5. Merge overlapping or duplicate information, and reflect the most current/accurate info when messages correct prior statements.
 6. Preaserve language of the messages. Do not translate to english if messages are in Russian or Ukrainian.
+7. Include message URL when relevant.
 
 Finally, produce a concise summary that covers:
 * Key developments or updates
