@@ -169,7 +169,7 @@ async def main():
     logging.basicConfig(level=logging.WARN)
 
     for dialog in await get_dialogs(client):
-        print(f"telegram dialog: {dialog['name']}:")
+        print(f"📰 {dialog['name']}:")
         entity = dialog["id"]
 
         if summary_response := await process_entity(entity):
