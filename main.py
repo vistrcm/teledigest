@@ -104,7 +104,7 @@ def messages2text(messages):
         username = msg["username"]
         text = msg["text"]
         url = f"https://t.me/{username}/{id}"
-        formatted_parts.append(f"message url: {url}\n{text}")
+        formatted_parts.append(f"url: {url}\nusername: {username}\n text:{text}")
 
     return "\n=-=-=-=-=\n".join(formatted_parts)
 
