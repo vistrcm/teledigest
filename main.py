@@ -169,12 +169,11 @@ async def main():
     logging.basicConfig(level=logging.WARN)
 
     for dialog in await get_dialogs(client):
-        print(f"📰 {dialog['name']}:")
         entity = dialog["id"]
 
         if summary_response := await process_entity(entity):
+            print(f"📰 {dialog['name']}:")
             print_wrapped(summary_response)
-
             print()
             print("*" * os.get_terminal_size().columns)  # separator
             print()
