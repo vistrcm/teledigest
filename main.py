@@ -39,7 +39,7 @@ Follow these steps:
 1. Read all messages, internally determine the main points, ignoring trivial or repeated content.
 2. If code snippets or links appear, include them accurately in the summary.
 3. Merge overlapping or duplicate information, and reflect the most current/accurate info when messages correct prior statements.
-4. Preaserve language of the messages. Do not translate to english if messages are in Russian or Ukrainian.
+4. Preaserve language. Do not translate to english if original text are in Russian or Ukrainian.
 
 Finally, produce a concise summary that covers:
 * Key developments or updates
