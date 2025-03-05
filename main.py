@@ -3,8 +3,6 @@ from telethon.tl import types
 import os
 import asyncio
 import logging
-import base64
-from pathlib import Path
 from data import Storage
 from telethon.sessions import StringSession
 import pyrage
