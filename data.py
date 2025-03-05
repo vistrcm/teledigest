@@ -3,6 +3,7 @@ import pyrage
 import asyncio
 from typing import Union
 from telethon.sessions import StringSession
+from io import BytesIO
 
 
 class Storage:
@@ -53,11 +54,40 @@ class Storage:
     async def write_last_known_msg(self, entity, latest_msg_id):
         await self.write_data(self._meta_last_msg_path(entity), str(latest_msg_id))
 
-    async def write_message(self, entity_path, message):
+    async def write_message(self, entity_path, message, content=None):
         file_path = entity_path / f"msg.{message.id}.txt.age"
-        await self.write_data(file_path, message.text)
+        # Use provided content if available, otherwise use message.text
+        text_to_write = content if content is not None else message.text
+        await self.write_data(file_path, text_to_write)
 
     async def save_session(self, session):
         path = self._session_path()
         path.parent.mkdir(parents=True, exist_ok=True)
         await self.write_data(path, session)
+        
+    async def download_and_encrypt_media(self, message, target_path):
+        """Download media to memory, encrypt it, and save to disk."""
+        # Download media to memory buffer
+        buffer = BytesIO()
+        await message.download_media(file=buffer)
+        
+        # Reset buffer pointer to start
+        buffer.seek(0)
+        
+        # Get binary data from buffer
+        media_data = buffer.read()
+        
+        # Encrypt the data
+        encrypted_data = pyrage.encrypt(media_data, [self.pubkey])
+        
+        # Write the encrypted data to file
+        with open(target_path, "wb") as encrypted_file:
+            encrypted_file.write(encrypted_data)
+            
+    async def decrypt_media(self, file_path):
+        """Decrypt media file and return the binary data."""
+        with open(file_path, "rb") as encrypted_file:
+            encrypted_data = encrypted_file.read()
+            
+        # Decrypt and return the data
+        return pyrage.decrypt(encrypted_data, [self.identity])
