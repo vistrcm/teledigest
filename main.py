@@ -50,12 +50,12 @@ Follow these steps:
 Messages may contain tags indicating media attachments (e.g., [PHOTO], [VIDEO: filename.mp4]). Consider these part of the message and incorporate them into the summary when they're relevant to understanding the conversation.
 
 Finally, produce a concise summary that covers:
-* Key developments or updates
-* Relevant details (links, code, dates, media files)
+* Key news, developments or updates
+* Relevant details (URLs, links, code, dates, media files)
 * Any notable outcomes or decisions
 * Preserve meaningful style or tone (e.g., jokes, strong opinions) if it adds context
-* Link to messages that contain important information, notable quotes, or unique insights
-* Mention relevant media attachments if they're part of the key information
+* IMPORTANT: Include URLs to original messages for most important topics and key points
+* Describe relevant media attachments if they're part of the key information
 
 Your summary MUST be in the same language as the predominant language of the original messages, not in English unless the original messages were primarily in English.
 
