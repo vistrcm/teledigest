@@ -95,7 +95,7 @@ async def summary(oai, content, images=None):
         messages.append({"role": "user", "content": content})
 
     completion = await oai.chat.completions.create(
-        model="gpt-4o",  # Using GPT-4o which has vision capabilities
+        model="gpt-4.1",
         n=1,  # only one completion
         messages=messages,
     )
